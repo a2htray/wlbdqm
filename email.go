@@ -9,10 +9,10 @@ import (
 )
 
 const (
-	MailFromKey  = "WLBDQM_MAIL_FROM"
-	MailPassword = "WLBDQM_MAIL_PASSWORD"
-	MailHost     = "WLBDQM_MAIL_HOST"
-	MailPort     = "WLBDQM_MAIL_PORT"
+	MailKeyFrom     = "WLBDQM_MAIL_FROM"
+	MailKeyPassword = "WLBDQM_MAIL_PASSWORD"
+	MailKeyHost     = "WLBDQM_MAIL_HOST"
+	MailKeyPort     = "WLBDQM_MAIL_PORT"
 )
 
 var (
@@ -43,10 +43,10 @@ type Message struct {
 }
 
 func SendEmail(toList []string, message Message) error {
-	from := os.Getenv(MailFromKey)
-	password := os.Getenv(MailPassword)
-	host := os.Getenv(MailHost)
-	port := os.Getenv(MailPort)
+	from := os.Getenv(MailKeyFrom)
+	password := os.Getenv(MailKeyPassword)
+	host := os.Getenv(MailKeyHost)
+	port := os.Getenv(MailKeyPort)
 
 	portInt64, err := strconv.ParseInt(port, 10, 64)
 	if err != nil {

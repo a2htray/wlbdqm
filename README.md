@@ -89,13 +89,13 @@ WLBDQM_MAIL_PORT=PORT DEPENDS ON EACH EMAIL SERVICE PROVIDER # 端口号
 启动程序
 
 ```bash
-$ wlbdqm -e ./.env -i 12h -p 80 -t  foo@example.com
+$ wlbdqm -e ./.env -i 12h -p 80 -t foo@example.com
 ```
 
 或后台运行并将输出重定向到日志文件
 
 ```bash
-$ nohup wlbdqm -e ./.env -i 12h -p 80 -t  foo@example.com > wlbdqm.log 2>&1 &
+$ nohup wlbdqm -e ./.env -i 12h -p 80 -t foo@example.com > wlbdqm.log 2>&1 &
 ```
 
 停止程序

@@ -45,10 +45,10 @@ public	USR	15.39T	45T	50T	11.71G	expired	|	645614	7500000	8000000	14238	none`
 		log.Fatal(err)
 	}
 
-	err = os.Setenv(MailFromKey, "a2htray@outlook.com")
-	err = os.Setenv(MailPassword, "MY PASSWORD")
-	err = os.Setenv(MailHost, "smtp-mail.outlook.com")
-	err = os.Setenv(MailPort, "587")
+	err = os.Setenv(MailKeyFrom, "a2htray@outlook.com")
+	err = os.Setenv(MailKeyPassword, "MY PASSWORD")
+	err = os.Setenv(MailKeyHost, "smtp-mail.outlook.com")
+	err = os.Setenv(MailKeyPort, "587")
 
 	err = SendEmail([]string{
 		"a2htray@outlook.com",
