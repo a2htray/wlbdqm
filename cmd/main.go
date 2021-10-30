@@ -49,7 +49,7 @@ func RunTask() {
 		if err != nil {
 			panic(err)
 		}
-		wlbdqm.InfoPrintln("email send")
+		wlbdqm.InfoPrintln("email sent", "to:", to)
 	}
 }
 
