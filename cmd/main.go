@@ -9,16 +9,16 @@ import (
 )
 
 var (
-	debug = false
-	interval = "12h"
+	debug              = false
+	interval           = "12h"
 	percentage float64 = 80
-	to = "a2htray@outlook.com"
-	env = ""
+	to                 = "a2htray@outlook.com"
+	env                = ""
 )
 
 var toList = make([]string, 0)
 
-func RunTask()  {
+func RunTask() {
 	output, err := wlbdqm.RunDiskQuota()
 	if err != nil {
 		panic(err)

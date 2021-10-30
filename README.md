@@ -1,9 +1,19 @@
 wlbdqm: Work Life Balance - Disk Quota Monitor
 ======================
 
+> 定时执行 `diskquota` 命令，解析输出内容，计算存储占用比例及文件使用比例。若满足条件，则发送告警邮件。
+
 ### 安装
 
+根据系统选择合适的执行文件，点击链接下载，并将文件拷贝或链接到 `$PATH` 其中目录即可。
 
+* [Linux amd64](https://raw.githubusercontent.com/a2htray/wlbdqm/main/bin/wlbdqm_linux_amd64)
+* [darwin amd64](https://raw.githubusercontent.com/a2htray/wlbdqm/main/bin/wlbdqm_darwin_amd64)
+
+```bash
+$ mv wlbdqm_linux_amd64 wlbdqm
+$ ln -s /YOUR_PATH/wlbdqm /usr/local/bin/wlbdqm
+```
 
 ### 选项
 
@@ -45,7 +55,9 @@ WLBDQM_MAIL_HOST=HOST DEPENDS ON EACH EMAIL SERVICE PROVIDER # 服务商 SMTP �
 WLBDQM_MAIL_PORT=PORT DEPENDS ON EACH EMAIL SERVICE PROVIDER # 端口号
 ```
 
-### -i
+`.env` 文件可下载仓库的 `example.env`，或自行创建。
+
+#### -i
 
 `-i` 选项指定执行 `diskquota` 命令的时间间隔，执行时间从命令执行之时开始计算。
 
@@ -68,9 +80,35 @@ WLBDQM_MAIL_PORT=PORT DEPENDS ON EACH EMAIL SERVICE PROVIDER # 端口号
 `-t` 选项指定邮件接收人。使用分隔符`|`设置多人接收。
 
 ```bash
--t email1@example.com
--t email2@example.com|email3@example.com
+-t foo@example.com
+-t foo@example.com|bar@example.com
 ```
 
+### 示例
 
+启动程序
 
+```bash
+$ wlbdqm -e ./.env -i 12h -p 80 -t  foo@example.com
+```
+
+或后台运行并将输出重定向到日志文件
+
+```bash
+$ nohup wlbdqm -e ./.env -i 12h -p 80 -t  foo@example.com > wlbdqm.log 2>&1 &
+```
+
+停止程序
+
+```bash
+$ ps -ef | grep wlbdqm
+501 75553 36966   0 12:58PM ttys001    0:00.01 wlbdqm -e ./.env -i 12h -p 80 -t foo@example.com
+501 75802 36966   0 12:59PM ttys001    0:00.00 grep wlbdqm
+$ kill -9 75553
+```
+
+### 其他
+
+邮件截图
+
+![](./assets/screenshots/screenshot1.png)

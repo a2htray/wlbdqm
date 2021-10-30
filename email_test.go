@@ -9,8 +9,8 @@ import (
 func TestPrepareDiskInsufficientContent(t *testing.T) {
 	contentItem := ContentItem{
 		MaxPercentage: 80,
-		DPercentage: 81.22,
-		FPercentage: 15.01,
+		DPercentage:   81.22,
+		FPercentage:   15.01,
 		DPOutput: `Filesystem	type	blocks	quota	limit	in_doubt	grace	|	files	quota	limit	in_doubt	grace	Remarks
 public	USR	15.39T	45T	50T	11.71G	expired	|	645614	7500000	8000000	14238	none`,
 	}
@@ -35,9 +35,9 @@ public	USR	15.39T	45T	50T	11.71G	expired	|	645614	7500000	8000000	14238	none`
 
 	contentItem := ContentItem{
 		MaxPercentage: 80,
-		DPercentage: 81.22,
-		FPercentage: 15.01,
-		DPOutput: dq.HTMLTable(),
+		DPercentage:   81.22,
+		FPercentage:   15.01,
+		DPOutput:      dq.HTMLTable(),
 	}
 
 	content, err := PrepareDiskInsufficientContent(contentItem)
@@ -57,7 +57,5 @@ public	USR	15.39T	45T	50T	11.71G	expired	|	645614	7500000	8000000	14238	none`
 	if err != nil {
 		log.Fatal(err)
 	}
-
-
 
 }

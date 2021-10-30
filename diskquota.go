@@ -44,18 +44,18 @@ func RunDiskQuota() (string, error) {
 // files	quota	limit	in_doubt	grace	Remarks
 type DQOutput struct {
 	Filesystem string
-	Type string
-	DBlocks string
-	DQuota string
-	DLimit string
-	DInDoubt string
-	DGrace string
-	FFiles string
-	FQuota string
-	FLimit string
-	FInDoubt string
-	FGrace string
-	Remarks string
+	Type       string
+	DBlocks    string
+	DQuota     string
+	DLimit     string
+	DInDoubt   string
+	DGrace     string
+	FFiles     string
+	FQuota     string
+	FLimit     string
+	FInDoubt   string
+	FGrace     string
+	Remarks    string
 }
 
 func (dq DQOutput) ByteOfBlocks() float64 {
@@ -138,7 +138,7 @@ func (dq DQOutput) HTMLTable() string {
 		<td>` + dq.FLimit + `</td>
 		<td>` + dq.FInDoubt + `</td>
 		<td>` + dq.FGrace + `</td>
-		<td>` + dq.Remarks+ `</td>
+		<td>` + dq.Remarks + `</td>
 	</tr>
 </table>`
 }

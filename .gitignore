@@ -19,3 +19,4 @@
 .idea
 .env
 bin/wlbdqm
+wlbdqm.log

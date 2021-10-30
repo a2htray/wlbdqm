@@ -21,7 +21,7 @@ const (
 )
 
 type Interval struct {
-	t float64
+	t    float64
 	unit intervalUnit
 }
 
@@ -47,7 +47,7 @@ func IntervalFromString(s string) (*Interval, error) {
 	}
 
 	interval := &Interval{
-		t: t,
+		t:    t,
 		unit: intervalUnit(ss[0][2]),
 	}
 

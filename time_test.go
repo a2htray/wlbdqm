@@ -26,5 +26,4 @@ func TestIntervalFromString(t *testing.T) {
 
 	t.Log(interval)
 
-
 }

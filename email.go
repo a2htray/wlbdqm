@@ -9,10 +9,10 @@ import (
 )
 
 const (
-	MailFromKey = "WLBDQM_MAIL_FROM"
+	MailFromKey  = "WLBDQM_MAIL_FROM"
 	MailPassword = "WLBDQM_MAIL_PASSWORD"
-	MailHost = "WLBDQM_MAIL_HOST"
-	MailPort = "WLBDQM_MAIL_PORT"
+	MailHost     = "WLBDQM_MAIL_HOST"
+	MailPort     = "WLBDQM_MAIL_PORT"
 )
 
 var (
@@ -32,14 +32,14 @@ var (
 // ContentItem
 type ContentItem struct {
 	MaxPercentage float64
-	DPercentage float64
-	FPercentage float64
-	DPOutput string
+	DPercentage   float64
+	FPercentage   float64
+	DPOutput      string
 }
 
 type Message struct {
 	Subject string
-	Body string
+	Body    string
 }
 
 func SendEmail(toList []string, message Message) error {
@@ -56,7 +56,7 @@ func SendEmail(toList []string, message Message) error {
 	m := gomail.NewMessage()
 	m.SetHeader("From", from)
 	m.SetHeader("To", toList...)
-	m.SetHeader("Subject", "程序自动发送，勿回 - " + message.Subject)
+	m.SetHeader("Subject", "程序自动发送，勿回 - "+message.Subject)
 	m.SetBody("text/html", message.Body)
 
 	d := gomail.NewDialer(host, int(portInt64), from, password)
@@ -83,6 +83,6 @@ func PrepareDiskInsufficientContent(item ContentItem) (Message, error) {
 
 	return Message{
 		Subject: "存储空间不足",
-		Body: content,
+		Body:    content,
 	}, nil
 }

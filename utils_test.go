@@ -19,7 +19,6 @@ func TestParseSizeToByte(t *testing.T) {
 
 	log.Println(v)
 
-
 	s = "1M"
 	v, err = ParseSizeToByte(s)
 	if err != nil {

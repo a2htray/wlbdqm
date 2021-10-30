@@ -9,18 +9,18 @@ import (
 
 func DebugPrintln(vs ...interface{}) {
 	if appMode == AppModeDebug {
-		vs = append([]interface{} {"[debug] "}, vs...)
+		vs = append([]interface{}{"[debug] "}, vs...)
 		log.Println(vs...)
 	}
 }
 
 func ErrorPrintln(vs ...interface{}) {
-	vs = append([]interface{} {"[error] "}, vs...)
+	vs = append([]interface{}{"[error] "}, vs...)
 	log.Println(vs...)
 }
 
 func InfoPrintln(vs ...interface{}) {
-	vs = append([]interface{} {"[info] "}, vs...)
+	vs = append([]interface{}{"[info] "}, vs...)
 	log.Println(vs...)
 }
 
@@ -46,5 +46,5 @@ func ParseSizeToByte(s string) (float64, error) {
 		return 0, errors.New("parse size error")
 	}
 
-	return coef*part, nil
+	return coef * part, nil
 }
