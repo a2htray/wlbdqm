@@ -3,9 +3,14 @@ package wlbdqm
 import (
 	"errors"
 	"fmt"
+	"os"
 	"os/exec"
 	"strconv"
 	"strings"
+)
+
+const (
+	scriptKeyFromDiskquota = "WLBDQM_DISKQUOTA_SCRIPT"
 )
 
 // Filesystem	type	blocks	quota	limit	in_doubt	grace	|	files	quota	limit	in_doubt	grace	Remarks
@@ -30,7 +35,7 @@ const (
 var dqHeader = "Filesystem\ttype\tblocks\tquota\tlimit\tin_doubt\tgrace\t|\tfiles\tquota\tlimit\tin_doubt\tgrace\tRemarks"
 
 func RunDiskQuota() (string, error) {
-	cmd := exec.Command("diskquota")
+	cmd := exec.Command(os.Getenv(scriptKeyFromDiskquota))
 	output, err := cmd.Output()
 	if err != nil {
 		return "", err
