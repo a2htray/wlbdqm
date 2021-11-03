@@ -10,7 +10,8 @@ import (
 )
 
 const (
-	scriptKeyFromDiskquota = "WLBDQM_DISKQUOTA_SCRIPT"
+	scriptKeyDiskquota = "WLBDQM_DISKQUOTA_SCRIPT"
+	scriptKeyBash = "WLBDQM_SHELL_BASH"
 )
 
 // Filesystem	type	blocks	quota	limit	in_doubt	grace	|	files	quota	limit	in_doubt	grace	Remarks
@@ -35,8 +36,20 @@ const (
 var dqHeader = "Filesystem\ttype\tblocks\tquota\tlimit\tin_doubt\tgrace\t|\tfiles\tquota\tlimit\tin_doubt\tgrace\tRemarks"
 
 func RunDiskQuota() (string, error) {
-	cmd := exec.Command(os.Getenv(scriptKeyFromDiskquota))
+	bash := "/bin/bash"
+	if os.Getenv(scriptKeyBash) != "" {
+		bash = os.Getenv(scriptKeyBash)
+	}
+
+	DebugPrintln("env bash:", os.Getenv(scriptKeyBash)!="")
+	DebugPrintln("env diskquota:", os.Getenv(scriptKeyDiskquota))
+	DebugPrintln("bash:", bash)
+
+	cmd := exec.Command(bash, os.Getenv(scriptKeyDiskquota))
 	output, err := cmd.Output()
+
+	DebugPrintln("command output:", string(output))
+
 	if err != nil {
 		return "", err
 	}
